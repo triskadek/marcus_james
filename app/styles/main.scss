@@ -1,4 +1,44 @@
 // bower:scss
 // endbower
 
+html,
+body {
+  height: 100%;
+}
 
+body {
+  margin: 0;
+}
+
+.plx-scene {
+  position: absolute;
+  width: 600px;
+  height: 400px;
+  background: rgba(#ccc, 0.25);
+  left: 50%;
+  top: 50%;
+  margin-left: -300px;
+  margin-top: -200px;
+  &__layer {
+    position: absolute;
+    &--image {
+      right: 32px;
+    }
+    &--frame {
+      background-color: transparent;
+      border: 10px solid blue;
+      width: 200px;
+      height: 360px;
+      left: 80px;
+      top: 24px;
+    }
+    &--letters {
+      font-size: 60px;
+      font-weight: bold;
+      height: 60px;
+      line-height: 60px;
+      left: 64px;
+      top: 300px;
+    }
+  }
+}
