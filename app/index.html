@@ -34,10 +34,11 @@
     </header>
     <section class="canvas canvas--frame">
         <section id="frame" class="parallax parallax--frame rotate rotate--frame" data-parallax-values="10,-5">
-          <svg width="193px" height="165px" viewBox="649 327 193 165" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="frame__svg">
+          <svg  id="frame__svg" idth="193px" height="165px" viewBox="649 327 193 165" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
               <desc>Created with Sketch.</desc>
               <defs></defs>
-              <path d="M774.7,429.4 L774.7,396.4 C774.7,386.2 762.4,399.8 762.4,399.8 C762.4,399.8 757,405.2 750.3,410.5 C742.8,416.5 737.6,410.5 737.6,410.5 L728.7,401.6 C712.5,385.4 714.3,404.6 714.3,404.6 L714.3,429 C714.3,437.9 712.5,447.8 689.7,449.4 C687.5,449.6 658.1,453.6 658.1,429.2 C658.1,412.9 658.9,395.2 658.9,395.2 C658.9,362.9 687.5,336.4 719.8,336.4 L773.4,336.4 C805.7,336.4 832.2,362.8 832.2,395.2 L832.2,423.3 C832.2,455.6 813.9,482.1 773.4,482.1 L719.8,482.1 C707.7,482.1 684.4,481.7 684.4,421.9 L684.4,399.6 C684.4,381.2 699.4,366.2 717.8,366.2 L771,366.2 C789.4,366.2 804.4,381.2 804.4,399.6 L804.4,421.9 C804.4,440.3 801.2,455.3 771,455.3 C771,455.3 744.1,457.3 744.1,437 L744.1,434.3" id="Shape" stroke="#3d3c6c" stroke-width="18" fill="none"></path>
+              <path d="M774.7,429.4 L774.7,396.4 C774.7,386.2 762.4,399.8 762.4,399.8 C762.4,399.8 757,405.2 750.3,410.5 C742.8,416.5 737.6,410.5 737.6,410.5 L728.7,401.6 C712.5,385.4 714.3,404.6 714.3,404.6 L714.3,429 C714.3,437.9 712.5,447.8 689.7,449.4 C687.5,449.6 658.1,453.6 658.1,429.2 C658.1,412.9 658.9,395.2 658.9,395.2 C658.9,362.9 687.5,336.4 719.8,336.4 L773.4,336.4 C805.7,336.4 832.2,362.8 832.2,395.2 L832.2,423.3 C832.2,455.6 813.9,482.1 773.4,482.1 L719.8,482.1 C707.7,482.1 684.4,481.7 684.4,421.9 L684.4,399.6 C684.4,381.2 699.4,366.2 717.8,366.2 L771,366.2 C789.4,366.2 804.4,381.2 804.4,399.6 L804.4,421.9 C804.4,440.3 801.2,455.3 771,455.3 C771,455.3 744.1,457.3 744.1,437 L744.1,434.3" id="Shape" stroke="#212177" stroke-width="8" fill="none"></path>
           </svg>
         </section>
     </section>
@@ -82,6 +83,7 @@
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/gsap/src/uncompressed/TweenMax.js"></script>
+    <script src="/bower_components/vivus/dist/vivus.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -91,7 +93,48 @@
 
     <script>
       (function () {
-        var parallax = new Parallax( '.canvas', '.parallax', -.004 );
+        var project = $('#project'),
+            title = project.find('#project__title'),
+            hero = project.find('#project__hero'),
+            number = project.find('#project__number');
+
+        var isTween = false;
+
+
+        TweenMax.set(title, { left : '0', autoAlpha: 0});
+        TweenMax.set(number, { left : '0', autoAlpha: 0});
+        TweenMax.set(hero, { right : '0%', autoAlpha: 0});
+
+        var timeline = new TimelineMax({ onComplete : function () {
+            var parallax = new Parallax( '.canvas', '.parallax', -.004 );
+        }});
+
+        timeline
+          .to( title , .5, { left : '4.375em' , autoAlpha: 1})
+          .to( number , .5, { left : '10.25em', autoAlpha: 1}, '-=0.5')
+          .to( hero , .5, { right : '10%' , autoAlpha: 1},  '-=0.5');
+
+        timeline.stop();
+
+        var svg = new Vivus('frame__svg', { type: 'delayed', duration: 150}, function () {
+          if (isTween) {
+            timeline.reverse()
+          } else {
+            timeline.play()
+          }
+          isTween = !isTween;
+        });
+
+
+        window.restart = function () {
+          svg.play(-3);
+        }
+
+        window.svg = svg;
+
+
+
+        //
       })();
     </script>
   </body>
