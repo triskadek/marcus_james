@@ -3,14 +3,39 @@
   'use strict';
 
   function Parallax ( canvas, elements, fixer ) {
-    this.canvas = $( canvas );
-    this.elements = $( elements );
-    this.fixer = fixer;
+
+    if (!arguments.length) {
+      console.error('Could not create the instance, not pass the required parameters ( canvas, elements, fixer )');
+      return false;
+    }
+
+    if ( !( $.type( canvas) && $.type( elements) === 'string' ) ) {
+      console.error('canvas and elemenets, they must be of type string');
+      return false;
+    }
+
+     if ( !( $.type( new Number(fixer))  === 'number' ) ) {
+      console.error('fixer, they must be of type number');
+      return false;
+    }
+
+    this._cache( canvas, elements, fixer);
+
+    if (!(this.canvas.length && this.elements.length)) {
+      console.error('canvas and elements does not exists');
+      return false;
+    }
 
     this._init();
 
     return this;
   }
+
+  Parallax.prototype._cache = function( canvas, elements, fixer ) {
+    this.canvas = $( canvas );
+    this.elements = $( elements );
+    this.fixer = fixer || -.004;
+  };
 
   Parallax.prototype._init = function() {
     var self = this;
@@ -23,8 +48,8 @@
           ? event.clientY - .5 * canvas.height()
           : window.innerHeight;
       self._animate( mouseX, mouseY );
-
     });
+
   };
 
   Parallax.prototype._animate = function( mouseX, mouseY ) {
