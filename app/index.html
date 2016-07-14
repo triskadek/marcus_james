@@ -7,6 +7,7 @@
     <title>marcus_james</title>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- build:css styles/vendor.css -->
@@ -29,8 +30,26 @@
     <![endif]-->
 
   <div class="wrapper">
+    <div class="menu-reveal menu-reveal--close">
+      <div class="menu-reveal__layer menu-reveal__layer--front"></div>
+      <div class="menu-reveal__layer menu-reveal__layer--back">
+        <nav id="nav">
+          <ul class="menu-main">
+            <li class="menu-main__item"><a href="">about us</a></li>
+            <li class="menu-main__item"><a href="">corporate us</a></li>
+            <li class="menu-main__item"><a href="">personal development</a></li>
+            <li class="menu-main__item"><a href="">delegate forum</a></li>
+            <li class="menu-main__item"><a href="">contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
     <header id="header">
       <h1 class="logo"><a href="#" class="logo__link">Marcus James</a></h1>
+       <a href="" class="menu-trigger">
+        <span class="menu-trigger__label">Menú</span>
+        <span class="menu-trigger__icon"><i class="fa fa-bars"> </i></span>
+      </a>
     </header>
     <section class="canvas canvas--frame">
         <section id="frame" class="parallax parallax--frame rotate rotate--frame" data-parallax-values="10,-5">
@@ -38,7 +57,7 @@
               <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
               <desc>Created with Sketch.</desc>
               <defs></defs>
-              <path d="M774.7,429.4 L774.7,396.4 C774.7,386.2 762.4,399.8 762.4,399.8 C762.4,399.8 757,405.2 750.3,410.5 C742.8,416.5 737.6,410.5 737.6,410.5 L728.7,401.6 C712.5,385.4 714.3,404.6 714.3,404.6 L714.3,429 C714.3,437.9 712.5,447.8 689.7,449.4 C687.5,449.6 658.1,453.6 658.1,429.2 C658.1,412.9 658.9,395.2 658.9,395.2 C658.9,362.9 687.5,336.4 719.8,336.4 L773.4,336.4 C805.7,336.4 832.2,362.8 832.2,395.2 L832.2,423.3 C832.2,455.6 813.9,482.1 773.4,482.1 L719.8,482.1 C707.7,482.1 684.4,481.7 684.4,421.9 L684.4,399.6 C684.4,381.2 699.4,366.2 717.8,366.2 L771,366.2 C789.4,366.2 804.4,381.2 804.4,399.6 L804.4,421.9 C804.4,440.3 801.2,455.3 771,455.3 C771,455.3 744.1,457.3 744.1,437 L744.1,434.3" id="Shape" stroke="#212177" stroke-width="8" fill="none"></path>
+              <path d="M774.7,429.4 L774.7,396.4 C774.7,386.2 762.4,399.8 762.4,399.8 C762.4,399.8 757,405.2 750.3,410.5 C742.8,416.5 737.6,410.5 737.6,410.5 L728.7,401.6 C712.5,385.4 714.3,404.6 714.3,404.6 L714.3,429 C714.3,437.9 712.5,447.8 689.7,449.4 C687.5,449.6 658.1,453.6 658.1,429.2 C658.1,412.9 658.9,395.2 658.9,395.2 C658.9,362.9 687.5,336.4 719.8,336.4 L773.4,336.4 C805.7,336.4 832.2,362.8 832.2,395.2 L832.2,423.3 C832.2,455.6 813.9,482.1 773.4,482.1 L719.8,482.1 C707.7,482.1 684.4,481.7 684.4,421.9 L684.4,399.6 C684.4,381.2 699.4,366.2 717.8,366.2 L771,366.2 C789.4,366.2 804.4,381.2 804.4,399.6 L804.4,421.9 C804.4,440.3 801.2,455.3 771,455.3 C771,455.3 744.1,457.3 744.1,437 L744.1,434.3" id="Shape" stroke="#ebe8c7" stroke-width="10" fill="none"></path>
           </svg>
         </section>
     </section>
@@ -58,6 +77,14 @@
                 <p>01</p>
             </div>
         </div>
+      </div>
+
+      <div id="footer">
+        <div class="social-net">
+          <a href="" class="social-net__item"><i class="fa fa-facebook"></i></a>
+          <a href="" class="social-net__item"><i class="fa fa-twitter"></i></a>
+        </div>
+        <p class="footer__copy">Copyrights &copy; <br> 2016 –All Rights Reserved by Prowell.Media</p>
       </div>
     </div>
 
@@ -83,11 +110,14 @@
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/gsap/src/uncompressed/TweenMax.js"></script>
+    <script src="/bower_components/gsap/src/uncompressed/plugins/CSSRulePlugin.js"></script>
     <script src="/bower_components/vivus/dist/vivus.js"></script>
+    <script src="/bower_components/classie/classie.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js scripts/main.js -->
+    <script src="scripts/menu.module.js"></script>
     <script src="scripts/parallax.module.js"></script>
     <!-- endbuild -->
 
@@ -112,7 +142,7 @@
         timeline
           .to( title , .5, { left : '4.375em' , autoAlpha: 1})
           .to( number , .5, { left : '10.25em', autoAlpha: 1}, '-=0.5')
-          .to( hero , .5, { right : '10%' , autoAlpha: 1},  '-=0.5');
+          .to( hero , .5, { right : '5%' , autoAlpha: 1},  '-=0.5');
 
         timeline.stop();
 
@@ -131,6 +161,9 @@
         }
 
         window.svg = svg;
+
+
+        var menu = new Menu('a.menu-trigger', 'div.menu-reveal', 'ul.menu-main');
 
 
 
