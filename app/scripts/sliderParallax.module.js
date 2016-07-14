@@ -46,7 +46,6 @@
   SliderParallax.prototype._init = function( autoPlay ) {
 
     $(this).bind('in.start in.end out.start out.end', preventSelfcallCallback);
-
     if(autoPlay){
       this.start();
     }
