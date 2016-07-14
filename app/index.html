@@ -163,7 +163,6 @@
         var svg = new Vivus('frame__svg', { type: 'delayed', duration: 150}, function(){
           console.log(new Date().getTime() - now);
         });
-
         
         $(sp).bind("in.start",function(){
           now = new Date().getTime();
@@ -185,6 +184,15 @@
         window.prev = function(){
           sp.prev(svg_duration);
         };
+
+        $(document).keydown(function(e) {
+          switch(e.which) {
+              case 37: window.prev() break;
+              case 39: window.next() break;
+              default: return;
+          }
+          e.preventDefault();
+        });
 
         var menu = new Menu('a.menu-trigger', 'div.menu-reveal', 'ul.menu-main');
 
