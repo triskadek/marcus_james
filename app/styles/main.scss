@@ -166,6 +166,69 @@ a {
   }
 }
 
+.parallax {
+  height: inherit;
+  width: 100%;
+  &--slide {
+    //display:none;
+  }
+  &--title {
+    position: absolute;
+    left: 4.375em;
+    top: 28%;
+    max-width: 25em;
+    z-index: 2;
+    h1 {
+      font-size: 2.875em;
+      font-family: avenirnext-bold,Helvetica,sans-serif;
+      font-weight: 700;
+      letter-spacing: .1875em;
+      text-transform: uppercase;
+      color: #02010a;
+      line-height: 1;
+      margin: 0;
+      padding: 0
+    }
+  }
+  &--hero {
+    min-width: 17.5em;
+    min-height: 21.25em;
+    width: 19vw;
+    height: 45vh;
+    position: absolute;
+    bottom: 15%;
+    right: 10%;
+  }
+  &--picture {
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 70%;
+    height: 138%;
+    background-size: cover;
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-image: url('../images/guy.png');
+  }
+
+  &--number {
+    position: absolute;
+    z-index: 3;
+    left: 10.25em;
+    bottom: -0.4375em;
+    p {
+      font-size: 5em;
+      font-family: avenirnext-bold,Helvetica,sans-serif;
+      font-weight: 700;
+      letter-spacing: .1875em;
+      text-transform: uppercase;
+      color: #e3e5ec;
+      line-height: 1;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
 
 
 #footer {
@@ -194,6 +257,5 @@ a {
     font-size: 12px;
     margin-top: 0.15em;
   }
-
 
 }
