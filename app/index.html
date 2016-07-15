@@ -146,7 +146,7 @@
         var svg = new Vivus('frame__svg', { type: 'delayed', duration: 150}, function(){
           console.log(new Date().getTime() - now);
         });
-        
+
         $(sp).bind("in.start",function(){
           now = new Date().getTime();
           svg.play();
@@ -169,10 +169,17 @@
         };
 
         $(document).keydown(function(e) {
-          switch(e.which) {
-              case 37: window.prev() break;
-              case 39: window.next() break;
-              default: return;
+          switch (e.keyCode) {
+            case 37:
+              window.prev();
+              break;
+
+            case 39:
+              window.next();
+              break;
+
+            default:
+              break;
           }
           e.preventDefault();
         });

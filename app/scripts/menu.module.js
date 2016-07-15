@@ -46,7 +46,7 @@
 
     this.trigger.on('click', function ( event ) {
       event.preventDefault();
-      console.log('click');
+
       if (self.isOpen) {
         self.close();
       } else {
